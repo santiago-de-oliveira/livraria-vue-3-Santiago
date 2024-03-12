@@ -14,18 +14,21 @@ onMounted(async () => {
 function limpar() {
   Object.assign(editora, { ...defaultEditora });
 }
+
 async function salvar() {
   if (editora.id) {
     await editorasApi.atualizarEditora(editora);
   } else {
     await editorasApi.adicionarEditora(editora);
   }
-  limpar();
   editoras.value = await editorasApi.buscarTodasAsEditoras();
+  limpar();
 }
+
 function editar(editora_para_editar) {
   Object.assign(editora, editora_para_editar);
 }
+
 async function excluir(id) {
   await editorasApi.excluirEditora(id);
   editoras.value = await editorasApi.buscarTodasAsEditoras();
