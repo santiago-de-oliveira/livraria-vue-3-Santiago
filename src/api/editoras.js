@@ -1,4 +1,5 @@
 import axios from "axios";
+
 export default class EditorasApi {
   async buscarTodasAsEditoras() {
     const { data } = await axios.get("/editoras/");
